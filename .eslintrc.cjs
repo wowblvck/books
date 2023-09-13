@@ -10,6 +10,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:perfectionist/recommended-natural'
   ],
   parser: '@typescript-eslint/parser',
   root: true,
@@ -34,7 +35,7 @@ module.exports = {
       version: 'detect',
     },
   },
-  plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks', 'import'],
+  plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks', 'import', 'perfectionist'],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
