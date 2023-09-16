@@ -1,9 +1,9 @@
-import { BooksList } from '@widgets/books-list';
+import { Books } from '@widgets/books';
 
 export const MainPage = () => {
   return (
     <>
-      <BooksList />
+      <Books />
     </>
   );
 };
