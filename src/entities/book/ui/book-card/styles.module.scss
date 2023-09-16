@@ -1,0 +1,11 @@
+.link {
+  text-decoration: none;
+}
+
+.card {
+  height: 100%;
+  transition: all .3s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}

@@ -10,7 +10,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:perfectionist/recommended-natural'
+    '@feature-sliced',
   ],
   parser: '@typescript-eslint/parser',
   root: true,
