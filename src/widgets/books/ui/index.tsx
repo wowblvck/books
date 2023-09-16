@@ -1,8 +1,10 @@
 import { Button, Center, Container, Loader, Text } from '@mantine/core';
+import { useWindowScroll } from '@mantine/hooks';
 import { useBooksQuery, BookList, selectBookSessionData, changePage } from '@entities/book';
 
 import { config } from '@shared/config';
 import { useAppDispatch, useAppSelector } from '@shared/model';
+import { UpButton } from '@shared/ui/up-button';
 
 export const Books = () => {
   const { orderBy, value, category, page, isUpdateItems } = useAppSelector(selectBookSessionData);
@@ -18,6 +20,8 @@ export const Books = () => {
   const dispatch = useAppDispatch();
 
   const possibleResults = nextPage * config.MAX_RESULTS;
+
+  const [scroll, scrollTo] = useWindowScroll();
 
   const loadMore = () => {
     dispatch(changePage({ isUpdateItems: false, page: nextPage }));
@@ -61,6 +65,7 @@ export const Books = () => {
               </Button>
             )}
           </Center>
+          {scroll.y > 100 && <UpButton clickEvent={() => scrollTo({ y: 0 })} />}
         </>
       )}
     </Container>
