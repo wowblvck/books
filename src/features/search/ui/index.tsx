@@ -1,31 +1,37 @@
-import { categoriesToOptions, sortToOptions } from '@features/book/search/lib';
-import { BookCategory, BookSortBy } from '@features/book/search/model/types';
 import { Button, Flex, Input, Stack } from '@mantine/core';
-import { Dropdown } from '@shared/ui/dropdown';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { bookCategories, bookSortBy } from '../model/consts';
+import { bookCategories, bookOrderBy, changeData } from '@entities/book';
+import { useAppDispatch } from '@shared/model';
+import { Dropdown } from '@shared/ui/dropdown';
+import { categoryToOptions, orderToOptions } from '../lib';
+
+import { SearchFormState } from '../model';
 import styles from './styles.module.scss';
 
-interface SearchFormState {
-  category: BookCategory;
-  searchValue: string;
-  sortBy: BookSortBy;
-}
-
-const defaultState: SearchFormState = {
-  category: 'All',
-  searchValue: '',
-  sortBy: 'Relevance',
+const defaultFormValues: SearchFormState = {
+  category: '',
+  orderBy: 'Relevance',
+  value: 'everything',
 };
 
 export const SearchForm = () => {
   const { control, handleSubmit } = useForm<SearchFormState>({
-    defaultValues: defaultState,
+    defaultValues: defaultFormValues,
   });
 
+  const dispatch = useAppDispatch();
+
   const onSubmit: SubmitHandler<SearchFormState> = (data) => {
-    console.log(data);
+    dispatch(
+      changeData({
+        value: data.value,
+        category: data.category,
+        orderBy: data.orderBy,
+        page: 0,
+        isUpdateItems: true,
+      })
+    );
   };
 
   return (
@@ -33,11 +39,12 @@ export const SearchForm = () => {
       <Stack>
         <Controller
           control={control}
-          name="searchValue"
+          name="value"
           render={({ field }) => (
             <Input
-              {...field}
+              onChange={field.onChange}
               className={styles.input}
+              defaultValue={defaultFormValues.value}
               placeholder="Enter a book title or description"
               radius="md"
               size="md"
@@ -50,20 +57,20 @@ export const SearchForm = () => {
             name="category"
             render={({ field }) => (
               <Dropdown
-                defaultValue={defaultState.category}
+                defaultValue={defaultFormValues.category}
                 onChange={field.onChange}
-                options={categoriesToOptions(bookCategories)}
+                options={categoryToOptions(bookCategories)}
               />
             )}
           />
           <Controller
             control={control}
-            name="sortBy"
+            name="orderBy"
             render={({ field }) => (
               <Dropdown
-                defaultValue={defaultState.sortBy}
+                defaultValue={defaultFormValues.orderBy}
                 onChange={field.onChange}
-                options={sortToOptions(bookSortBy)}
+                options={orderToOptions(bookOrderBy)}
               />
             )}
           />

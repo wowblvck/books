@@ -1,6 +1,5 @@
-import { SearchForm } from '@features/book/search';
 import { Container, Stack } from '@mantine/core';
-
+import { SearchForm } from '@features/search';
 import { Logo } from '../logo';
 import styles from './styles.module.scss';
 

@@ -1,5 +1,5 @@
-import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
+import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
@@ -13,6 +13,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@app': resolvePath('./src/app'),
+      '@entities': resolvePath('./src/entities'),
       '@features': resolvePath('./src/features'),
       '@pages': resolvePath('./src/pages'),
       '@shared': resolvePath('./src/shared'),
