@@ -8,7 +8,7 @@ export const LayoutHeader = () => {
     <header className={styles.header}>
       <div className={styles.blur}>
         <Container className={styles.container}>
-          <Stack className={styles.list}>
+          <Stack className={styles.list} w={'100%'}>
             <Logo />
             <SearchForm />
           </Stack>

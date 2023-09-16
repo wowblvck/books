@@ -7,7 +7,6 @@ import { Dropdown } from '@shared/ui/dropdown';
 import { categoryToOptions, orderToOptions } from '../lib';
 
 import { SearchFormState } from '../model';
-import styles from './styles.module.scss';
 
 const defaultFormValues: SearchFormState = {
   category: '',
@@ -43,7 +42,7 @@ export const SearchForm = () => {
           render={({ field }) => (
             <Input
               onChange={field.onChange}
-              className={styles.input}
+              w={'100%'}
               defaultValue={defaultFormValues.value}
               placeholder="Enter a book title or description"
               radius="md"
@@ -51,7 +50,7 @@ export const SearchForm = () => {
             />
           )}
         />
-        <Flex align="center" gap="md">
+        <Flex align="center" gap="md" direction={{ xs: 'column', sm: 'row' }}>
           <Controller
             control={control}
             name="category"
@@ -74,7 +73,13 @@ export const SearchForm = () => {
               />
             )}
           />
-          <Button className={styles.btn} radius="md" type="submit">
+          <Button
+            w={120}
+            ml={{ xs: 'none', sm: 'auto' }}
+            style={{ flexShrink: 0 }}
+            radius="md"
+            type="submit"
+          >
             Find
           </Button>
         </Flex>

@@ -3,7 +3,6 @@ import { useBooksQuery, BookList, selectBookSessionData, changePage } from '@ent
 
 import { config } from '@shared/config';
 import { useAppDispatch, useAppSelector } from '@shared/model';
-import styles from './styles.module.scss';
 
 export const Books = () => {
   const { orderBy, value, category, page, isUpdateItems } = useAppSelector(selectBookSessionData);
@@ -41,7 +40,7 @@ export const Books = () => {
   }
 
   return (
-    <Container className={styles.container} size="lg">
+    <Container size="lg" pt={20} pb={20}>
       {data && (
         <>
           <Center>

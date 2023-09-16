@@ -12,7 +12,7 @@ export const BookList: React.FC<BookListProps> = ({ books }) => {
   return (
     <Grid gutter="xl" m={0}>
       {books.map((book) => (
-        <Grid.Col key={book.etag} xs={6} md={3}>
+        <Grid.Col key={book.etag} xs={12} sm={6} md={4} lg={3}>
           <BookCard book={book} />
         </Grid.Col>
       ))}
