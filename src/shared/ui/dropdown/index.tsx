@@ -19,6 +19,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ defaultValue, onChange, opti
 
   return (
     <Select
+      w={{ xs: '100%', sm: 'auto' }}
       data={options.map((option) => {
         const { label, value } = option;
         return {
