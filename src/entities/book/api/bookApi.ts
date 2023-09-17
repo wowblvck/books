@@ -27,7 +27,7 @@ export const bookApi = googleApi.injectEndpoints({
         return newItems;
       },
       forceRefetch({ currentArg, previousArg }) {
-        return currentArg !== previousArg;
+        return JSON.stringify(currentArg) !== JSON.stringify(previousArg);
       },
     }),
   }),
