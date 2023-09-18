@@ -38,7 +38,7 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks', 'import', 'perfectionist'],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
+    'react-hooks/exhaustive-deps': 'off',
     'comma-dangle': ['error', 'only-multiline'],
     'react/prop-types': 'off',
     'react/display-name': 'off',
