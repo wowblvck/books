@@ -15,6 +15,10 @@ export interface BookItem {
   imageLinks?: {
     smallThumbnail?: string;
     thumbnail?: string;
+    small?: string;
+    medium?: string;
+    large?: string;
+    extraLarge?: string;
   };
   selfLink: string;
   subtitle?: string;

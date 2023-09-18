@@ -1,9 +1,9 @@
-import { type BookVolume } from '@entities/book';
 import { googleApi } from '@shared/api';
 import { config } from '@shared/config';
 
-import { mapVolume } from '../lib';
-import { type BookRequestArgs, BookVolumeDto } from './types';
+import { mapBook, mapVolume } from '../lib';
+import { type BookVolume, BookItem } from '../model';
+import { type BookRequestArgs, BookVolumeDto, BookItemDto } from './types';
 
 export const bookApi = googleApi.injectEndpoints({
   endpoints: (build) => ({
@@ -30,7 +30,15 @@ export const bookApi = googleApi.injectEndpoints({
         return JSON.stringify(currentArg) !== JSON.stringify(previousArg);
       },
     }),
+    book: build.query<BookItem, string>({
+      query: (bookId) => ({
+        url: `/volumes/${bookId}`,
+      }),
+      transformResponse: (response: BookItemDto) => {
+        return mapBook(response);
+      },
+    }),
   }),
 });
 
-export const { useBooksQuery } = bookApi;
+export const { useBooksQuery, useBookQuery } = bookApi;
