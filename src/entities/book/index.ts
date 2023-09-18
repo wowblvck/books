@@ -1,4 +1,4 @@
-export { useBooksQuery } from './api';
+export { useBooksQuery, useBookQuery } from './api';
 export type { BookItem, BookVolume, BookSession, BookCategory, BookOrder } from './models';
 export { bookCategories, bookOrderBy } from './models';
 export {

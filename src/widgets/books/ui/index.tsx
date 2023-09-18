@@ -30,7 +30,7 @@ export const Books = () => {
   if (!isFetching && !data?.items) {
     return (
       <Center h={200}>
-        <Text fz="md">Items not found</Text>
+        <Text fz="md">Books not found</Text>
       </Center>
     );
   }
