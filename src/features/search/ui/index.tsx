@@ -9,7 +9,7 @@ import { categoryToOptions, orderToOptions } from '../lib';
 import { SearchFormState } from '../model';
 
 const defaultFormValues: SearchFormState = {
-  category: '',
+  category: ' ',
   orderBy: 'Relevance',
   value: 'everything',
 };

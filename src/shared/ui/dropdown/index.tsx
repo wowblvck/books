@@ -13,6 +13,8 @@ type DropdownProps = {
 };
 
 export const Dropdown: React.FC<DropdownProps> = ({ defaultValue, onChange, options }) => {
+  const sortedOptions = [...options].sort((a, b) => a.label.localeCompare(b.label));
+
   const handleChange = (value: string) => {
     onChange(value);
   };
@@ -20,7 +22,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ defaultValue, onChange, opti
   return (
     <Select
       w={{ xs: '100%', sm: 'auto' }}
-      data={options.map((option) => {
+      data={sortedOptions.map((option) => {
         const { label, value } = option;
         return {
           label,
@@ -29,6 +31,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ defaultValue, onChange, opti
       })}
       defaultValue={defaultValue}
       onChange={handleChange}
+      allowDeselect={false}
       radius="md"
       size="md"
     />

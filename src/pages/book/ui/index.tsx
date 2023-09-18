@@ -22,7 +22,7 @@ export const BookPage = () => {
   if (isFetching) {
     return (
       <Center h={200}>
-        <Loader variant="dots" />
+        <Loader />
       </Center>
     );
   }

@@ -1,5 +1,5 @@
 export const bookCategories = {
-  All: '',
+  All: ' ',
   Biography: 'Biography',
   Computers: 'Computers',
   History: 'History',

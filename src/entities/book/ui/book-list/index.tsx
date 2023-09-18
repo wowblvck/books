@@ -16,10 +16,7 @@ export const BookList: React.FC<BookListProps> = ({ books, firstItemRef }) => {
       {books.map((book, idx) => (
         <Grid.Col
           key={book.etag}
-          xs={12}
-          sm={6}
-          md={4}
-          lg={3}
+          span={{ xs: 12, sm: 6, md: 4, lg: 3 }}
           ref={idx === books.length - config.MAX_RESULTS ? firstItemRef : null}
         >
           <BookCard book={book} />

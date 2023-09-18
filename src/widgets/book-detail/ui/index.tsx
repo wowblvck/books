@@ -13,11 +13,16 @@ export const BookDetail: React.FC<BookDetailProps> = ({ data }) => {
 
   return (
     <Container size="lg" pt={20} pb={20}>
-      <Grid m={0} gutter={50}>
+      <Grid gutter={{ base: 50 }}>
         <Grid.Col span="auto">
-          <Image src={imageLinks?.thumbnail} height={370} fit="contain" withPlaceholder />
+          <Image
+            src={imageLinks?.thumbnail}
+            height={370}
+            fit="contain"
+            fallbackSrc="https://placehold.co/300x370?text=No+image"
+          />
         </Grid.Col>
-        <Grid.Col md={6} lg={8}>
+        <Grid.Col span={{ md: 6, lg: 8 }}>
           <Flex direction="column">
             {categories && (
               <Breadcrumbs
@@ -31,7 +36,7 @@ export const BookDetail: React.FC<BookDetailProps> = ({ data }) => {
             )}
             <Title order={2}>{title}</Title>
             {authors && (
-              <Text td="underline" mt={10} color="dimmed" size="sm">
+              <Text td="underline" mt={10} c="dimmed" size="sm">
                 {authors.join(', ')}
               </Text>
             )}

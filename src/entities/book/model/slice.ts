@@ -3,7 +3,7 @@ import type { BookSession } from './model';
 
 const initialState: BookSession = {
   page: 0,
-  category: '',
+  category: ' ',
   value: 'everything',
   orderBy: 'Relevance',
   isUpdateItems: false,
