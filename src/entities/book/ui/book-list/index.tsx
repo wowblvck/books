@@ -2,17 +2,26 @@ import { Grid } from '@mantine/core';
 import React from 'react';
 import type { BookItem } from '@entities/book';
 
+import { config } from '@shared/config';
 import { BookCard } from '../book-card';
 
 type BookListProps = {
   books: BookItem[];
+  firstItemRef?: React.Ref<HTMLDivElement> | null;
 };
 
-export const BookList: React.FC<BookListProps> = ({ books }) => {
+export const BookList: React.FC<BookListProps> = ({ books, firstItemRef }) => {
   return (
     <Grid gutter="xl" m={0}>
-      {books.map((book) => (
-        <Grid.Col key={book.etag} xs={12} sm={6} md={4} lg={3}>
+      {books.map((book, idx) => (
+        <Grid.Col
+          key={book.etag}
+          xs={12}
+          sm={6}
+          md={4}
+          lg={3}
+          ref={idx === books.length - config.MAX_RESULTS ? firstItemRef : null}
+        >
           <BookCard book={book} />
         </Grid.Col>
       ))}
