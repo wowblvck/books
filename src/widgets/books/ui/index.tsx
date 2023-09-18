@@ -1,6 +1,6 @@
 import { Button, Center, Container, Loader, Text } from '@mantine/core';
 import { useWindowScroll } from '@mantine/hooks';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useBooksQuery, BookList, selectBookSessionData, changePage } from '@entities/book';
 
 import { config } from '@shared/config';
@@ -30,7 +30,7 @@ export const Books = () => {
     dispatch(changePage({ isUpdateItems: false, page: nextPage }));
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (page > 0 && data?.items && itemRef.current) {
       scrollTo({ y: itemRef.current.offsetTop });
     }
@@ -47,7 +47,7 @@ export const Books = () => {
   if (isLoading || (isFetching && isUpdateItems)) {
     return (
       <Center h={200}>
-        <Loader variant="dots" />
+        <Loader />
       </Center>
     );
   }

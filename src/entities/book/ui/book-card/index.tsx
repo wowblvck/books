@@ -20,7 +20,7 @@ export const BookCard: React.FC<BookCardProps> = ({ book }) => {
             fit="contain"
             height={230}
             src={imageLinks?.smallThumbnail}
-            withPlaceholder
+            fallbackSrc="https://placehold.co/200x230?text=No+image"
           />
         </Card.Section>
 
@@ -30,10 +30,10 @@ export const BookCard: React.FC<BookCardProps> = ({ book }) => {
               {categories[0]}
             </Badge>
           )}
-          <Text weight={500}>{title}</Text>
+          <Text size="sm">{title}</Text>
         </Stack>
         {authors && (
-          <Text color="dimmed" size="sm">
+          <Text c="dimmed" size="sm">
             {authors.join(', ')}
           </Text>
         )}
