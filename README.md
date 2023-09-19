@@ -1,6 +1,7 @@
 <h1 align="center">Google Books</h1>
 
 [![Develop](https://github.com/wowblvck/books/actions/workflows/develop.yml/badge.svg)](https://github.com/wowblvck/books/actions/workflows/develop.yml)
+[![Production](https://github.com/wowblvck/books/actions/workflows/production.yml/badge.svg)](https://github.com/wowblvck/books/actions/workflows/production.yml)
 
 > RU: Онлайн сервис по поиску книг с использование Google Books API.
 
