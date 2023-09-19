@@ -1,13 +1,9 @@
-import { Button } from '@mantine/core';
+import { Button, ButtonProps, createPolymorphicComponent } from '@mantine/core';
 import React from 'react';
 
-type UpButtonProps = {
-  clickEvent: () => void;
-};
-
-export const UpButton: React.FC<UpButtonProps> = ({ clickEvent }) => {
-  return (
-    <Button onClick={clickEvent} radius="xl" pos={'fixed'} bottom={40} right={40} w={60} h={60}>
+export const UpButton = createPolymorphicComponent<'button', ButtonProps>(
+  React.forwardRef<HTMLButtonElement, ButtonProps>(({ ...props }, ref) => (
+    <Button {...props} ref={ref} radius="xl">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="icon icon-tabler icon-tabler-arrow-up"
@@ -26,5 +22,5 @@ export const UpButton: React.FC<UpButtonProps> = ({ clickEvent }) => {
         <path d="M6 11l6 -6"></path>
       </svg>
     </Button>
-  );
-};
+  ))
+);
