@@ -1,5 +1,5 @@
 import { Button, Flex, Input, Stack } from '@mantine/core';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from '@mantine/form';
 
 import { bookCategories, bookOrderBy, changeData } from '@entities/book';
 import { useAppDispatch } from '@shared/model';
@@ -15,13 +15,13 @@ const defaultFormValues: SearchFormState = {
 };
 
 export const SearchForm = () => {
-  const { control, handleSubmit } = useForm<SearchFormState>({
-    defaultValues: defaultFormValues,
+  const form = useForm({
+    initialValues: defaultFormValues,
   });
 
   const dispatch = useAppDispatch();
 
-  const onSubmit: SubmitHandler<SearchFormState> = (data) => {
+  const onSubmit = (data: SearchFormState) => {
     dispatch(
       changeData({
         value: data.value,
@@ -34,44 +34,25 @@ export const SearchForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={form.onSubmit(onSubmit)}>
       <Stack>
-        <Controller
-          control={control}
-          name="value"
-          render={({ field }) => (
-            <Input
-              onChange={field.onChange}
-              w={'100%'}
-              defaultValue={defaultFormValues.value}
-              placeholder="Enter a book title or description"
-              radius="md"
-              size="md"
-            />
-          )}
+        <Input
+          {...form.getInputProps('value')}
+          w={'100%'}
+          placeholder="Enter a book title or description"
+          radius="md"
+          size="md"
         />
         <Flex align="center" gap="md" direction={{ xs: 'column', sm: 'row' }}>
-          <Controller
-            control={control}
-            name="category"
-            render={({ field }) => (
-              <Dropdown
-                defaultValue={defaultFormValues.category}
-                onChange={field.onChange}
-                options={categoryToOptions(bookCategories)}
-              />
-            )}
+          <Dropdown
+            {...form.getInputProps('category')}
+            defaultValue={defaultFormValues.category}
+            options={categoryToOptions(bookCategories)}
           />
-          <Controller
-            control={control}
-            name="orderBy"
-            render={({ field }) => (
-              <Dropdown
-                defaultValue={defaultFormValues.orderBy}
-                onChange={field.onChange}
-                options={orderToOptions(bookOrderBy)}
-              />
-            )}
+          <Dropdown
+            {...form.getInputProps('orderBy')}
+            defaultValue={defaultFormValues.orderBy}
+            options={orderToOptions(bookOrderBy)}
           />
           <Button
             w={120}
