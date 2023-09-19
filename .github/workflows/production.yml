@@ -2,7 +2,7 @@ name: Production
 
 on:
   pull_request:
-    types: ["opened", "edited", "synchronize"]
+    types: ["opened", "edited", "synchronize", "closed"]
     branches: ["main"]
 
 jobs:
@@ -31,8 +31,15 @@ jobs:
         run: yarn install
       - name: Build
         run: yarn build
+      - name: Archive build artifacts
+        run: tar -czf build.tar.gz dist
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-dist
+          path: build.tar.gz
     outputs:
-      status: ${{ job.status }}
+        status: ${{ job.status }}
 
   deploy:
     name: Deploy to Netlify
@@ -46,6 +53,14 @@ jobs:
       pull-requests: write
 
     steps:
+      - uses: actions/checkout@v4
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-dist
+          path: .
+      - name: Extract build artifacts
+        run: tar -xzf build.tar.gz
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
         with:
