@@ -1,10 +1,12 @@
 import { createTheme, Loader, MantineProvider } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 import { store } from '@app/appStore';
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 
 import { appRouter } from './appRouter';
 import './styles/global.scss';
@@ -19,6 +21,7 @@ ReactDOM.createRoot(root!).render(
   <React.StrictMode>
     <Provider store={store}>
       <MantineProvider theme={theme}>
+        <Notifications />
         <RouterProvider
           fallbackElement={<Loader className="loader-overlay" size="xl" />}
           router={appRouter()}
