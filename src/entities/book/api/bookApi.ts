@@ -32,7 +32,7 @@ export const bookApi = googleApi.injectEndpoints({
     }),
     book: build.query<BookItem, string>({
       query: (bookId) => ({
-        url: `/volumes/${bookId}`,
+        url: `/volumes/${bookId}?key=${config.API_KEY}`,
       }),
       transformResponse: (response: BookItemDto) => {
         return mapBook(response);
