@@ -12,7 +12,7 @@ type BookListProps = {
 
 export const BookList: React.FC<BookListProps> = ({ books, firstItemRef }) => {
   return (
-    <Grid gutter="xl" m={0}>
+    <Grid gutter="xl" pt={25} pb={25} pr={15} pl={15}>
       {books.map((book, idx) => (
         <Grid.Col
           key={book.etag}
