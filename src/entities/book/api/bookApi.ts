@@ -6,6 +6,7 @@ import { type BookVolume, BookItem } from '../model';
 import { type BookRequestArgs, BookVolumeDto, BookItemDto } from './types';
 
 export const bookApi = googleApi.injectEndpoints({
+  overrideExisting: true,
   endpoints: (build) => ({
     books: build.query<BookVolume, BookRequestArgs>({
       query: ({ orderBy, q, subject, page }) => ({
@@ -19,7 +20,7 @@ export const bookApi = googleApi.injectEndpoints({
         return endpointName;
       },
       merge: (currentCache, newItems) => {
-        if (newItems.page > 0) {
+        if (currentCache.page !== newItems.page && newItems.page !== 0) {
           currentCache.items.push(...newItems.items);
           currentCache.page = newItems.page;
           return currentCache;

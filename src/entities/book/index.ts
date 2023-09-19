@@ -6,6 +6,7 @@ export {
   changeUpdateStatus,
   changePage,
   changeData,
+  changeViewPosition,
   selectBookSessionData,
 } from './models';
 export type { BookItemDto, BookVolumeDto } from './api';
