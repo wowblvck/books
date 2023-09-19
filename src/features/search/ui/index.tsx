@@ -29,6 +29,7 @@ export const SearchForm = () => {
         orderBy: data.orderBy,
         page: 0,
         isUpdateItems: true,
+        viewPosition: 0,
       })
     );
   };

@@ -7,6 +7,7 @@ const initialState: BookSession = {
   value: 'everything',
   orderBy: 'Relevance',
   isUpdateItems: false,
+  viewPosition: 0,
 };
 
 export const bookSessionSlice = createSlice({
@@ -23,9 +24,13 @@ export const bookSessionSlice = createSlice({
     changeUpdateStatus: (state, action: PayloadAction<boolean>) => {
       state.isUpdateItems = action.payload;
     },
+    changeViewPosition: (state, action: PayloadAction<number>) => {
+      state.viewPosition = action.payload;
+    },
   },
 });
 
-export const { changeData, changePage, changeUpdateStatus } = bookSessionSlice.actions;
+export const { changeData, changePage, changeUpdateStatus, changeViewPosition } =
+  bookSessionSlice.actions;
 
 export const selectBookSessionData = (state: RootState) => state.bookSession;

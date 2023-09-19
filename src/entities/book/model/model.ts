@@ -31,4 +31,5 @@ export interface BookSession {
   orderBy: BookOrderValue;
   category: BookCategoryValue;
   isUpdateItems: boolean;
+  viewPosition: number;
 }
